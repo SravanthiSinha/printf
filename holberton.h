@@ -20,6 +20,7 @@ int print_unsigned_octal(unsigned int);
 int print_unsigned_binary(unsigned int);
 int print_unsigned_hexdecimal_integer(unsigned int);
 int print_unsigned_hexdecimal_integer_U(unsigned int);
+int print_int(int n);
 int print_character(char);
 int print_str(char *str);
 int print_string(char *, int count);

@@ -85,6 +85,10 @@ int print_unsigned_octal(unsigned int);
 ```
 
 ```c
+int print_int(int n);
+```
+
+```c
 /* print_number - Prints the unsigned integer.*/
 void print_number(unsigned int);
 ```
