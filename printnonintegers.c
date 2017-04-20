@@ -66,7 +66,7 @@ int print_pointeraddress(int *p)
 	unsigned int *x = (unsigned int *)(&p);
 
 	if (!p)
-		return (print_character('0') - 1);
+		return print_str("(nil)") - 1;
 	bytecount = 0;
 	divide = sizeof(void *) / sizeof(unsigned int);
 	write(1, "0x", 2);
