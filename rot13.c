@@ -49,6 +49,8 @@ char *rot13(char *s)
 			str[i] = (char)(a + 13);
 		else if ((a >= 110 && a < 123) || (a >= 78 && a < 91))
 			str[i] = (char)(a - 13);
+		else
+			str[i] = a;
 		i++;
 	}
 	return (str);
