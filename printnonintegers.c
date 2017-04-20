@@ -62,15 +62,17 @@ int print_string(char *s, int count)
 int print_pointeraddress(int *p)
 {
 	int divide;
-	int count;
+	int bytecount;
 	unsigned int *x = (unsigned int *)(&p);
 
+	if (!p)
+		return (print_character('0') - 1);
+	bytecount = 0;
 	divide = sizeof(void *) / sizeof(unsigned int);
-	count = divide;
 	write(1, "0x", 2);
 	for (divide--; divide >= 0; divide--)
 	{
-		print_unsigned_hexdecimal_integer(*(x + divide));
+		bytecount += print_unsigned_hexdecimal_integer(*(x + divide));
 	}
-	return (2 + count);
+	return (bytecount - 1);
 }
