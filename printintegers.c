@@ -100,6 +100,7 @@ int print_unsigned_hexdecimal_integer_U(unsigned int n)
 	if (!n)
 		return (print_character('0') - 1);
 	bytecount = 0;
+	no = 0;
 	i = 7;
 	while (n > 16)
 	{
