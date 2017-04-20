@@ -13,7 +13,7 @@ typedef int bool;
 
 void print_oct(unsigned int n);
 void print_bin(unsigned int n);
-char *int_str(int num, char *str);
+char *integer_str(int num, char *str);
 int print_signed_decimal_int(signed int);
 int print_unsigned_decimal_int(unsigned int);
 int print_unsigned_octal(unsigned int);
@@ -34,7 +34,7 @@ int print_o(va_list ap, int count, char specifier);
 char *string_concat(char *dest, char *src);
 int str_len(const char *s);
 int str_ncomp(char *s1, char *s2, int k);
-void reverse(char str[], int length);
+char *reverse(char *str);
 char *string_dup(char *str);
-
+int print_string_rev(char *s, int count);
 #endif

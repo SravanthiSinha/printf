@@ -56,13 +56,13 @@ int string_to_integer(char *s)
 }
 
 /**
- * int_str - The function int_str converts a C string to number.
+ * integer_str - The function int_str converts a C string to number.
  * @num: num to be converted.
  * @str: stores a converted integer
  * Description: converts an integer to string
  * Return:  returns a C string
  */
-char *int_str(int num, char *str)
+char *integer_str(int num, char *str)
 {
 	int i;
 	bool isNegative;
@@ -91,7 +91,7 @@ char *int_str(int num, char *str)
 	if (isNegative)
 		str[i++] = '-';
 	str[i] = '\0';
-	reverse(str, i);
+	reverse(str);
 	return (str);
 }
 

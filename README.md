@@ -13,8 +13,8 @@ int string_to_integer(char *s);
 ```
 
 ```c
-/* int_str - The function int_str converts a C string to number.*/
-char *int_str(int num, char *str);
+/* integer_str - The function int_str converts a C string to number.*/
+char *integer_str(int num, char *str);
 ```
 
 ```c
@@ -70,6 +70,11 @@ int print_string(char *, int count);
 ```
 
 ```c
+/* print_string - writes a string  to the screen in reverse*/
+int print_string_rev(char *, int count);
+```
+
+```c
 /*print_pointeraddress - writes an address of an pointer */
 int print_pointeraddress(int *);
 ```
@@ -115,7 +120,7 @@ int str_ncomp(char *s1, char *s2, int k);
 
 ```c
 /* reverse - A function to reverse the string*/
-void reverse(char str[], int length);
+char reverse(char *str[]);
 ```
 
 ```c

@@ -54,25 +54,24 @@ int print_string(char *s, int count)
 }
 
 /**
- * print_pointeraddress - writes an address of an pointer
- * @p: pointer of type int*
- * Description: writes a address of an pointer
+ * print_string_rev - writes a string  to the screen
+ * @s: string to be outputed
+ * @count: count
+ * Description: writes a string to the screen
  * Return: Returns the number of bytes that were written
  */
-int print_pointeraddress(int *p)
+int print_string_rev(char *s, int count)
 {
-	int divide;
 	int bytecount;
-	unsigned int *x = (unsigned int *)(&p);
 
-	if (!p)
-		return (print_str("(nil)") - 1);
 	bytecount = 0;
-	divide = sizeof(void *) / sizeof(unsigned int);
-	write(1, "0x", 2);
-	for (divide--; divide >= 0; divide--)
+	if (s == NULL)
+		bytecount = print_str("(null)") - 1;
+	else
 	{
-		bytecount += print_unsigned_hexdecimal_integer(*(x + divide));
+		bytecount = print_str(reverse(s));
+		if (count)
+			bytecount -= 1;
 	}
-	return (bytecount + 3);
+	return (bytecount);
 }

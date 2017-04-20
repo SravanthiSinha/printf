@@ -88,3 +88,26 @@ int print_int(int n)
 	return (bytecount - 1);
 
 }
+/**
+ * print_pointeraddress - writes an address of an pointer
+ * @p: pointer of type int*
+ * Description: writes a address of an pointer
+ * Return: Returns the number of bytes that were written
+ */
+int print_pointeraddress(int *p)
+{
+	int divide;
+	int bytecount;
+	unsigned int *x = (unsigned int *)(&p);
+
+	if (!p)
+		return (print_str("(nil)") - 1);
+	bytecount = 0;
+	divide = sizeof(void *) / sizeof(unsigned int);
+	write(1, "0x", 2);
+	for (divide--; divide >= 0; divide--)
+	{
+		bytecount += print_unsigned_hexdecimal_integer(*(x + divide));
+	}
+	return (bytecount + 3);
+}

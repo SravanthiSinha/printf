@@ -3,19 +3,26 @@
 /**
  * reverse - A function to reverse the string
  * @str: string to be reversed
- * @length: length of the @str to be reversed
+ * Description: A function to reverse the string
+ * Return:  a string reversed
  */
-void reverse(char str[], int length)
+char *reverse(char *str)
 {
-	int start = 0;
-	int end = length - 1;
+	char *s;
+	int i, len;
 
-	while (start < end)
+	len =  str_len(str);
+	i = 0;
+	s = malloc(sizeof(*s) * (len + 1));
+	if (s == NULL)
+		return (NULL);
+	while (i < len)
 	{
-		swap(&(str[start]), &(str[end]));
-		start++;
-		end--;
+		s[i] = str[len - i - 1];
+		i++;
 	}
+	s[i] = '\0';
+	return (s);
 }
 
 /**
