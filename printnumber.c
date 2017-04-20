@@ -22,6 +22,8 @@ int print_unsigned_binary(unsigned int n)
 {
 	int i;
 
+	if (!n)
+		return (print_character('0') - 1);
 	i = 0;
 	print_bin(n);
 	while (n != 0)
