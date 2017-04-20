@@ -10,6 +10,8 @@ int print_signed_decimal_int(signed int n)
 {
 	char s[100];
 
+	if (!n)
+		return (print_character('0') - 1);
 	if (n < 0)
 	{
 		n = n * -1;
@@ -30,6 +32,8 @@ int print_unsigned_decimal_int(unsigned int n)
 {
 	char s[100];
 
+	if (!n)
+		return (print_character('0') - 1);
 	print_number(n);
 	int_str(n, s);
 	return (str_len(s));
