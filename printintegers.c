@@ -9,17 +9,19 @@
 int print_signed_decimal_int(signed int n)
 {
 	char s[100];
+	int bytecount;
 
 	if (!n)
-		return (print_character('0') - 1);
+		bytecount = print_character('0') - 1;
 	if (n < 0)
 	{
 		n = n * -1;
 		print_character('-');
+		bytecount++;
 	}
 	print_number(n);
 	int_str(n, s);
-	return (str_len(s));
+	return (str_len(s)+bytecount);
 }
 
 /**
