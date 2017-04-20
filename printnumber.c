@@ -20,18 +20,20 @@ void print_number(unsigned int n)
  */
 int print_unsigned_binary(unsigned int n)
 {
-	int i;
+	int bytecount;
 
 	if (!n)
 		return (print_character('0') - 1);
-	i = 0;
+	bytecount = 0;
+	if(n == 0)
+	 	bytecount++;
 	print_bin(n);
 	while (n != 0)
 	{
 		n = n / 2;
-		i++;
+		bytecount++;
 	}
-	return (i);
+	return (bytecount - 1);
 }
 
 /**
