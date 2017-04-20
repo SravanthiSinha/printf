@@ -21,7 +21,7 @@ int print_signed_decimal_int(signed int n)
 	}
 	print_number(n);
 	int_str(n, s);
-	return (str_len(s)+bytecount);
+	return (str_len(s) + bytecount);
 }
 
 /**
