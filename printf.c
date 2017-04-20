@@ -3,44 +3,45 @@
 /**
  * print_o - Choose the format to be printed based on the specifier
  * @ap: its mine damnit
- * @p: the total number of characters written.
- * @i: the postion of the character to check the specifier
- * @format: This is the string that contains the text to be written to stdout.
- * It can optionally contain embedded format tags that are replaced by the
- * values specified in subsequent additional arguments and formatted as
- * requested.
+ * @count: the total number of characters written.
+ * @specifier: specifier to work on *
  * Description: Choose the format to be printed based on the specifier
+ * Return: byte count.
  */
-void print_o(va_list ap, int *p, int *i, const char *format)
+int print_o(va_list ap, int count, char specifier)
 {
-	if (format[*i + 1] == 'i')
-		*p += print_signed_decimal_int(va_arg(ap, signed int));
-	else if (format[*i + 1] == 'd')
-		*p += print_signed_decimal_int(va_arg(ap, signed int));
-	else if (format[*i + 1] == 'u')
-		*p += print_unsigned_decimal_int(va_arg(ap, unsigned int));
-	else if (format[*i + 1] == 'o')
-		*p += print_unsigned_octal(va_arg(ap, unsigned int));
-	else if (format[*i + 1] == 'x')
-		*p += print_unsigned_hexdecimal_integer(va_arg(ap, unsigned int));
-	else if (format[*i + 1] == 'X')
-		*p += print_unsigned_hexdecimal_integer_U(va_arg(ap, unsigned int));
-	else if (format[*i + 1] == 'c')
-		*p += print_character((char)va_arg(ap, int));
-	else if (format[*i + 1] == 's')
-		*p += print_string(va_arg(ap, char *));
-	else if (format[*i + 1] == 'p')
-		*p += print_pointeraddress(va_arg(ap, int *));
-	else if (format[*i + 1] == 'b')
-		*p += print_unsigned_binary(va_arg(ap, unsigned int));
-	else if (format[*i + 1] == '%')
-		*p += print_character('%');
+	int bytecount;
+
+	bytecount = 0;
+	if (specifier == 'i')
+		bytecount= print_signed_decimal_int(va_arg(ap, signed int));
+	else if (specifier == 'd')
+		bytecount= print_signed_decimal_int(va_arg(ap, signed int));
+	else if (specifier == 'u')
+		bytecount= print_unsigned_decimal_int(va_arg(ap, unsigned int));
+	else if (specifier == 'o')
+		bytecount= print_unsigned_octal(va_arg(ap, unsigned int));
+	else if (specifier == 'x')
+		bytecount= print_unsigned_hexdecimal_integer(va_arg(ap, unsigned int));
+	else if (specifier == 'X')
+		bytecount= print_unsigned_hexdecimal_integer_U(va_arg(ap, unsigned int));
+	else if (specifier == 'c')
+		print_character((char)va_arg(ap, int));
+	else if (specifier == 's')
+		bytecount= print_string(va_arg(ap, char *), count);
+	else if (specifier == 'p')
+		bytecount= print_pointeraddress(va_arg(ap, int *));
+	else if (specifier == 'b')
+		bytecount= print_unsigned_binary(va_arg(ap, unsigned int));
+	else if (specifier == '%')
+		print_character('%');
 	else
 	{
 		print_character('%');
-		print_character(format[*i + 1]);
-		*p += 2;
+		bytecount++;
+		print_character(specifier);
 	}
+	return bytecount;
 }
 
 /**
@@ -55,34 +56,32 @@ void print_o(va_list ap, int *p, int *i, const char *format)
 int _printf(const char *format, ...)
 {
 	va_list ap;
-	int *i;
-	int *p;
 	int len;
-	int a;
-	int b;
+	int count;
+	int bytecount;
 
-	a = 0;
-	b = -1;
-	i = &a;
-	p = &b;
-	va_start(ap, format);
-	len = str_len(format);
-	while (format[*i])
+	count = 0;
+	bytecount = 0;
+	if (format)
+		va_start(ap, format);
+	else
+		return (-1);
+	for (len = 0; format[len] != '\0'; len++)
 	{
-		if (format[*i] == '%' && *i < len)
-		{
-			print_o(ap, p, i, format);
-			(*i)++;
-		}
+		if (format[len] != '%')
+			print_character(format[len]);
 		else
 		{
-			(*p)++;
-			print_character(format[*i]);
+			len++;
+			if (!format[len])
+				return (-1);
+			count++;
+			bytecount += print_o(ap, count,format[len]);
 		}
-		(*i)++;
 	}
 	va_end(ap);
-	if (*p == -1)
-		return (*p);
-	return (*p + 1);
+	if (count > 0)
+		len -= count;
+	len += bytecount;
+	return (len);
 }

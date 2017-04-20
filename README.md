@@ -29,7 +29,7 @@ void print_bin(unsigned int n);
 
 ```c
 /* print_o - Choose the format to be printed based on the specifier*/
-void print_o(va_list ap, int *p, int *i, const char *format);
+int print_o(va_list ap, int count, char specifier);
 ```
 
 ```c
@@ -66,7 +66,7 @@ int print_character(char);
 
 ```c
 /* print_string - writes a string  to the screen*/
-int print_string(char *);
+int print_string(char *, int count);
 ```
 
 ```c
