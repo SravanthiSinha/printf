@@ -67,6 +67,7 @@ int print_unsigned_hexdecimal_integer(unsigned int n)
 		s[i] = (c[r]);
 		i--;
 		n = n / 16;
+		bytecount++;
 	}
 	s[i] = c[n];
 	i = 0;
@@ -76,10 +77,9 @@ int print_unsigned_hexdecimal_integer(unsigned int n)
 			no++;
 		if (no)
 			print_character(*(s + i));
-		bytecount++;
 		i++;
 	}
-	return (bytecount - 1);
+	return (bytecount);
 }
 
 /**
@@ -107,6 +107,7 @@ int print_unsigned_hexdecimal_integer_U(unsigned int n)
 		s[i] = (c[r]);
 		i--;
 		n = n / 16;
+		bytecount++;
 	}
 	s[i] = c[n];
 	i = 0;
@@ -116,8 +117,7 @@ int print_unsigned_hexdecimal_integer_U(unsigned int n)
 			no++;
 		if (no)
 			print_character(*(s + i));
-		bytecount++;
 		i++;
 	}
-	return (bytecount - 1);
+	return (bytecount);
 }
