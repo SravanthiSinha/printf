@@ -31,6 +31,8 @@ int print_o(va_list ap, int count, char specifier)
 		bytecount = print_string(va_arg(ap, char *), count);
 	else if (specifier == 'r')
 		bytecount = print_string_rev(va_arg(ap, char *), count);
+	else if (specifier == 'R')
+		bytecount = print_string_rot13(va_arg(ap, char *), count);
 	else if (specifier == 'p')
 		bytecount = print_pointeraddress(va_arg(ap, int *));
 	else if (specifier == 'b')

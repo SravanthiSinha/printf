@@ -37,4 +37,6 @@ int str_ncomp(char *s1, char *s2, int k);
 char *reverse(char *str);
 char *string_dup(char *str);
 int print_string_rev(char *s, int count);
+int print_string_rot13(char *s, int count);
+char *rot13(char *s);
 #endif

@@ -127,3 +127,13 @@ char reverse(char *str[]);
 /* string_dup - Creates a duplicate of the string pointed to by str*/
 char *string_dup(char *str);
 ```
+
+```c
+/* print_string_rot13 - writes a rot13 decoded string  to the screen */
+int print_string_rot13(char *s, int count);
+```
+
+```c
+/* rot13 - Returns a rot13 decoded string  to the screen */
+char *rot13(char *s)
+```
