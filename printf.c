@@ -55,14 +55,17 @@ void print_o(va_list ap, int *p, int *i, const char *format)
 int _printf(const char *format, ...)
 {
 	va_list ap;
-	int *i, *p;
+	int *i;
+	int *p;
 	int len;
-	int a, b;
+	int a;
+	int b;
 
-	a = 0, b = 0;
-	va_start(ap, format);
+	a = 0;
+	b = 0;
 	i = &a;
 	p = &b;
+	va_start(ap, format);
 	len = str_len(format);
 	while (format[*i])
 	{
