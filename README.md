@@ -135,5 +135,5 @@ int print_string_rot13(char *s, int count);
 
 ```c
 /* rot13 - Returns a rot13 decoded string  to the screen */
-char *rot13(char *s)
+char *rot13(char *s);
 ```
