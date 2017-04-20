@@ -13,7 +13,9 @@ int print_string_rot13(char *s, int count)
 
 	bytecount = 0;
 	if (s == NULL)
+	{
 		bytecount = print_str("(null)") - 1;
+	}
 	else
 	{
 		bytecount = print_str(rot13(s));
@@ -32,25 +34,21 @@ int print_string_rot13(char *s, int count)
 char *rot13(char *s)
 {
 	int i, len;
-        char *str;
-        char a;
+	char *str;
+	char a;
 
-        len =  str_len(s);
-        i = 0;
-        str = malloc(sizeof(*str) * (len + 1));
-        if (str == NULL)
-                return (NULL);
+	len = str_len(s);
+	i = 0;
+	str = malloc(sizeof(*str) * (len + 1));
+	if (str == NULL)
+		return (NULL);
 	while (s[i] != '\0')
 	{
 		a = (int)s[i];
 		if ((a >= 97 && a < 110) || (a >= 65 && a < 78))
-		{
 			str[i] = (char)(a + 13);
-		}
 		else if ((a >= 110 && a < 123) || (a >= 78 && a < 91))
-		{
 			str[i] = (char)(a - 13);
-		}
 		i++;
 	}
 	return (str);
