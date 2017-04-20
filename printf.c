@@ -62,7 +62,7 @@ int _printf(const char *format, ...)
 	int b;
 
 	a = 0;
-	b = 0;
+	b = -1;
 	i = &a;
 	p = &b;
 	va_start(ap, format);
@@ -82,5 +82,7 @@ int _printf(const char *format, ...)
 		(*i)++;
 	}
 	va_end(ap);
-	return (*p);
+	if (*p == -1)
+		return (*p);
+	return (*p + 1);
 }
