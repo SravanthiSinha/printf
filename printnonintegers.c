@@ -33,6 +33,7 @@ int print_str(char *str)
 /**
  * print_string - writes a string  to the screen
  * @s: string to be outputed
+ * @count: count
  * Description: writes a string to the screen
  * Return: Returns the number of bytes that were written
  */
@@ -41,7 +42,7 @@ int print_string(char *s, int count)
 	int bytecount;
 
 	bytecount = 0;
-	if(s == NULL)
+	if (s == NULL)
 		bytecount = print_str("(null)") - 1;
 	else
 	{

@@ -14,25 +14,25 @@ int print_o(va_list ap, int count, char specifier)
 
 	bytecount = 0;
 	if (specifier == 'i')
-		bytecount= print_signed_decimal_int(va_arg(ap, signed int));
+		bytecount = print_signed_decimal_int(va_arg(ap, signed int));
 	else if (specifier == 'd')
-		bytecount= print_signed_decimal_int(va_arg(ap, signed int));
+		bytecount = print_signed_decimal_int(va_arg(ap, signed int));
 	else if (specifier == 'u')
-		bytecount= print_unsigned_decimal_int(va_arg(ap, unsigned int));
+		bytecount = print_unsigned_decimal_int(va_arg(ap, unsigned int));
 	else if (specifier == 'o')
-		bytecount= print_unsigned_octal(va_arg(ap, unsigned int));
+		bytecount = print_unsigned_octal(va_arg(ap, unsigned int));
 	else if (specifier == 'x')
-		bytecount= print_unsigned_hexdecimal_integer(va_arg(ap, unsigned int));
+		bytecount = print_unsigned_hexdecimal_integer(va_arg(ap, unsigned int));
 	else if (specifier == 'X')
-		bytecount= print_unsigned_hexdecimal_integer_U(va_arg(ap, unsigned int));
+		bytecount = print_unsigned_hexdecimal_integer_U(va_arg(ap, unsigned int));
 	else if (specifier == 'c')
 		print_character((char)va_arg(ap, int));
 	else if (specifier == 's')
-		bytecount= print_string(va_arg(ap, char *), count);
+		bytecount = print_string(va_arg(ap, char *), count);
 	else if (specifier == 'p')
-		bytecount= print_pointeraddress(va_arg(ap, int *));
+		bytecount = print_pointeraddress(va_arg(ap, int *));
 	else if (specifier == 'b')
-		bytecount= print_unsigned_binary(va_arg(ap, unsigned int));
+		bytecount = print_unsigned_binary(va_arg(ap, unsigned int));
 	else if (specifier == '%')
 		print_character('%');
 	else
@@ -41,7 +41,7 @@ int print_o(va_list ap, int count, char specifier)
 		bytecount++;
 		print_character(specifier);
 	}
-	return bytecount;
+	return (bytecount);
 }
 
 /**
@@ -76,7 +76,7 @@ int _printf(const char *format, ...)
 			if (!format[len])
 				return (-1);
 			count++;
-			bytecount += print_o(ap, count,format[len]);
+			bytecount += print_o(ap, count, format[len]);
 		}
 	}
 	va_end(ap);
