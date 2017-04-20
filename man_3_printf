@@ -1,6 +1,6 @@
 .\" Manpage for _printf.
 .\" Contact sravanthi.sinha@holbertonschool.com to correct errors or typos.
-.TH _printf 3 "20 April 2017" "version 1.0" "_printf man page"
+.TH _printf 3 "20 April 2017" "_printf(3)" "Version 0.1"
 .SH NAME
 _printf \- a formatted output conversion
 .SH SYNOPSIS
@@ -10,12 +10,16 @@ _printf \- a formatted output conversion
 .SH DESCRIPTION
 The functions _printf() produces output according to a format as described below.
 _printf() writes output to stdout, the standard output stream.
-.SH RETURN VALUE
+
+.B Return Value
+.RS
 Upon successful return, these functions return the number of characters printed (excluding the null  byte  used  to end output to strings).
+.RE
 
 .B Format
 .RS
 The format string includes the characters written to stdout unless a % is found. If a % is found, the succeeding character is evaluated and printed accordingly.
+.RE
 
 .B Specifier
 .RS
