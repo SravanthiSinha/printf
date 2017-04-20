@@ -1,74 +1,93 @@
-.TH _printf 1 "20 APril 2017" "_printf(1)" "version 0.1"
+.\" Manpage for _printf.
+.\" Contact sravanthi.sinha@holbertonschool.com to correct errors or typos.
+.TH _printf 3 "20 April 2017" "_printf(3)" "Version 0.1"
 .SH NAME
-.BI " _printf - formatted output conversion"
+_printf \- a formatted output conversion
 .SH SYNOPSIS
-.BI "int _printf(const char *format, ...);"
+#include <holberton.h>
+.TP
+.BI "int _printf(const char *format, ...)"
 .SH DESCRIPTION
-The _printf() function prints to stdout based on the
-.BI format
-string.
+The functions _printf() produces output according to a format as described below.
+_printf() writes output to stdout, the standard output stream.
 
 .B Return Value
 .RS
-Printf will return bytes written to stdout, or -1 if the format string is empty or NULL.
+Upon successful return, these functions return the number of characters printed (excluding the null  byte  used  to end output to strings).
 .RE
 
 .B Format
 .RS
-The format string consists of characters written directly to stdout unless a % is found. In the case a % is found, the next character is evaluated to determine whether it is a conversion specifier and should access a directive function argument.
+The format string includes the characters written to stdout unless a % is found. If a % is found, the succeeding character is evaluated and printed accordingly.
 .RE
 
-.B Conversion specifier
+.B Specifier
 .RS
 A character that determines the type of conversion to be applied. Available conversion specifiers are:
 .RE
 
 .RS
 .IP c
-If c conversion specifier is found, an int argument is converted to type char written to stdout.
+If c specifier is found, an int argument is converted to type char and written to stdout.
 .RE
 
 .RS
 .IP s
-If s conversion specifier is found, a char * argument is then printed to stdout while bytes writen is returned.
-.RE
-
-.RS
-.IP "d, i"
-If d or i conversion specifier is found, an int argument is passed to a print int which will print the decimal to stdout and return bytes written.
+If s specifier is found, a char * argument is then written to stdout while bytes written is returned.
 .RE
 
 .RS
 .IP %
-If an additional % is found, the first % escapes the second, and simply prints one % to stdout.
+If an additional % is found, it writes a '%' to stdout.
 .RE
+
+.RS
+.IP "d, i"
+If d or i specifier is found, an int  argument  is converted to signed decimal notation and written to stdout.
+.RE
+
 
 .SH EXAMPLE
 
 
 .nf
+#include "holberton.h"
+/**
+ * main - Entry point
+ *
+ * Return: Always 0
+ */
 int main(void)
 {
-	char *s = "Hello World";
-	char c = 'c';
-	int d = 5;
+	char *s = "Welcome!";
+	char c = 'X';
+	int d = 98;
+	int i = 1337;
 	int len;
 
-	len = _printf("String: %s | Character: %c | Decimal: %d\n", s, c, d);
-
-	/* This printf will print the return value of the previous printf */
-	_printf("Return on first _printf: %d\n", len);
+	_printf("Hello World\\n");
+	_printf("%s\\n",s);
+	_printf("Character c: %c\\n",c);
+	_printf("Decimal d: %d\\n",d);
+	len = _printf("Decimal i: %i\\n",i);
+	_printf("Return on last _printf: %d\\n", len);
 
 	return (0);
 }
 
-OUTPUT: String: Hello World | Character: c | Decimal: 15
-	   Return on last _printf: 49
+
+OUTPUT: Hello World
+        Welcome!
+        Character c: X
+        Decimal d: 98
+        Decimal i: 1337
+        Return on last _printf: 16
 .fi
 
-.SH BUGS
- - -
-.SH AUTHOR
-Sravanthi Sinha
 .SH SEE ALSO
-.BI "PRINTF(3)"
+printf(3)
+
+.SH BUGS
+No known bugs.
+.SH AUTHOR
+Sravanthi Sinha (sravanthi.sinha@holbertonschool.com)
